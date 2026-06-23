@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://doj4jxk4d2y81"]
+
+[ext_resource type="PackedScene" uid="uid://ccd28o46wjghx" path="res://Objects/cube.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cwcw53j1j2g3" path="res://Objects/player.tscn" id="2_bo1nx"]
+
+[node name="Game" type="Node2D" unique_id=791615044]
+
+[node name="Player" parent="." unique_id=1401649953 instance=ExtResource("2_bo1nx")]
+position = Vector2(544, 520)
+
+[node name="Platform" type="Node2D" parent="." unique_id=721336389]
+
+[node name="Cube" parent="Platform" unique_id=1697023165 instance=ExtResource("1_jjgbg")]
+position = Vector2(1024, 640)
+
+[node name="Cube2" parent="Platform" unique_id=1408955095 instance=ExtResource("1_jjgbg")]
+position = Vector2(896, 640)
+
+[node name="Cube3" parent="Platform" unique_id=1644657038 instance=ExtResource("1_jjgbg")]
+position = Vector2(768, 640)
+
+[node name="Cube4" parent="Platform" unique_id=12268662 instance=ExtResource("1_jjgbg")]
+position = Vector2(640, 640)
+
+[node name="Cube5" parent="Platform" unique_id=1307644422 instance=ExtResource("1_jjgbg")]
+position = Vector2(512, 640)
+
+[node name="Cube6" parent="Platform" unique_id=1491405191 instance=ExtResource("1_jjgbg")]
+position = Vector2(384, 640)
+
+[node name="Cube7" parent="Platform" unique_id=129030117 instance=ExtResource("1_jjgbg")]
+position = Vector2(256, 640)
+
+[node name="Cube8" parent="Platform" unique_id=647849657 instance=ExtResource("1_jjgbg")]
+position = Vector2(128, 640)
