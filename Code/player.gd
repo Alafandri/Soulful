@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -800.0
 
 const JUMP_BUFFER_TIME = 0.1
 var jump_buffer_timer = 0.0
 
 @onready var sprite = $Sprite2D
 
-const FALL_GRAVITY := 2000.0
+const FALL_GRAVITY := 2500.0
 
 func get_custom_gravity(current_velocity: Vector2) -> float:
 	if current_velocity.y < 0:
@@ -41,4 +41,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	handle_animations(direction)
+
 	move_and_slide()
+
+func handle_animations(direction: float) -> void:
+	if is_on_floor():
+		if direction != 0:
+			sprite.play("Move")
+		else:
+			sprite.play("Idle")

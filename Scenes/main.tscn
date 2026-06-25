@@ -1,35 +1,179 @@
-[gd_scene format=3 uid="uid://doj4jxk4d2y81"]
+[gd_scene format=4 uid="uid://doj4jxk4d2y81"]
 
-[ext_resource type="PackedScene" uid="uid://ccd28o46wjghx" path="res://Objects/cube.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://cwcw53j1j2g3" path="res://Objects/player.tscn" id="2_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://bofifjj0y5up2" path="res://Art/tilemapGodotGame1.png" id="3_8gbba"]
+[ext_resource type="Shader" uid="uid://8r6nqei3mp68" path="res://Shaders/wind.gdshader" id="3_jjvhh"]
+
+[sub_resource type="Gradient" id="Gradient_8gbba"]
+offsets = PackedFloat32Array(0.007163324, 0.16540642, 0.82703215, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.893186, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jjvhh"]
+gradient = SubResource("Gradient_8gbba")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_bo1nx"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
+gradient = SubResource("Gradient_bo1nx")
+
+[sub_resource type="Gradient" id="Gradient_jjvhh"]
+offsets = PackedFloat32Array(0.008503402, 0.5261438, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kry3j"]
+gradient = SubResource("Gradient_jjvhh")
+
+[sub_resource type="Curve" id="Curve_21xkr"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1.7770233), 0.0, 0.0, 0, 0, Vector2(0.11834319, -17.59816), 45.337883, 45.337883, 0, 0, Vector2(0.24654832, 6.24823), 0.0, 0.0, 0, 0, Vector2(0.38856015, -8.655762), 0.0, 0.0, 0, 0, Vector2(0.49901378, 6.24823), 0.0, 0.0, 0, 0, Vector2(0.6213018, -13.126953), 0.0, 0.0, 0, 0, Vector2(0.7554241, 12.209824), 0.0, 0.0, 0, 0, Vector2(0.89349115, -8.655762), 0.0, 0.0, 0, 0, Vector2(0.99999, 9.229019), 0.0, 0.0, 0, 0, Vector2(1, 13.700211), -442.32132, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_6bp64"]
+curve = SubResource("Curve_21xkr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bo1nx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
+gravity = Vector3(100, 20, 0)
+tangential_accel_min = -10.250002
+tangential_accel_max = 7.9999976
+tangential_accel_curve = SubResource("CurveTexture_6bp64")
+damping_max = 100.00001
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_kry3j")
+color_initial_ramp = SubResource("GradientTexture1D_8gbba")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
+texture = ExtResource("3_8gbba")
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_kry3j"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jjvhh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kry3j"]
+shader = ExtResource("3_jjvhh")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 1.0490000498275
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21xkr"]
+texture = ExtResource("3_8gbba")
+1:2/0 = 0
+2:2/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6bp64"]
+sources/0 = SubResource("TileSetAtlasSource_21xkr")
+
+[sub_resource type="Curve" id="Curve_bo1nx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.20552148, 0.4937837), 0.0, 0.0, 0, 0, Vector2(0.72699386, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8gbba"]
+curve = SubResource("Curve_bo1nx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjvhh"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 100, 1)
+gravity = Vector3(0, -5.01, 0)
+scale_min = 3.78
+scale_max = 3.78
+color = Color(1, 1, 0.3372549, 1)
+alpha_curve = SubResource("CurveTexture_8gbba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gbba"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 100, 1)
+gravity = Vector3(0, -5.01, 0)
+color = Color(1, 1, 1, 0.57254905)
+
+[sub_resource type="Gradient" id="Gradient_kry3j"]
+offsets = PackedFloat32Array(0, 0.07902299, 0.24856322, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.699422, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_21xkr"]
+gradient = SubResource("Gradient_kry3j")
+fill_to = Vector2(0, 1)
 
 [node name="Game" type="Node2D" unique_id=791615044]
 
 [node name="Player" parent="." unique_id=1401649953 instance=ExtResource("2_bo1nx")]
 position = Vector2(544, 520)
 
-[node name="Platform" type="Node2D" parent="." unique_id=721336389]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=517834051]
+visible = false
+modulate = Color(1, 1, 1, 0.60784316)
+texture_filter = 1
+position = Vector2(328, 416)
+amount = 25
+texture = SubResource("GradientTexture2D_jjvhh")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_bo1nx")
 
-[node name="Cube" parent="Platform" unique_id=1697023165 instance=ExtResource("1_jjgbg")]
-position = Vector2(1024, 640)
+[node name="MapLayer" type="TileMapLayer" parent="." unique_id=817557541]
+texture_filter = 1
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAABAAUAAAAHAAIAAAACAAUAAAAHAAIAAAADAAUAAAAHAAIAAAAEAAUAAAAHAAIAAAAFAAUAAAAHAAIAAAAGAAUAAAAHAAIAAAAHAAUAAAAHAAIAAAAIAAUAAAAHAAIAAAAJAAUAAAAHAAIAAAAAAAUAAAAHAAIAAAD//wUAAAAHAAIAAAAKAAUAAAAHAAIAAAALAAUAAAAHAAIAAAAMAAUAAAAHAAIAAAANAAUAAAAHAAIAAAAOAAUAAAAHAAIAAAAPAAUAAAAHAAIAAAAQAAUAAAAHAAIAAAARAAUAAAAHAAIAAAASAAUAAAAHAAIAAAATAAUAAAAHAAIAAAAUAAUAAAAHAAIAAAAVAAUAAAAHAAIAAAAWAAUAAAAHAAIAAAD//wYAAAAHAAMAAAD//wcAAAAHAAMAAAD//wgAAAAHAAMAAAD//wkAAAAHAAMAAAD//woAAAAHAAMAAAD//wsAAAAHAAMAAAD//wwAAAAHAAMAAAD//w0AAAAHAAMAAAAVAA0AAAAHAAMAAAAAAA0AAAAHAAMAAAABAA0AAAAHAAMAAAACAA0AAAAHAAMAAAADAA0AAAAHAAMAAAAEAA0AAAAHAAMAAAAFAA0AAAAHAAMAAAAGAA0AAAAHAAMAAAAHAA0AAAAHAAMAAAAIAAwAAAAHAAMAAAAJAAwAAAAHAAMAAAAKAAwAAAAHAAMAAAALAAwAAAAHAAMAAAAMAAwAAAAHAAMAAAANAAwAAAAHAAMAAAAOAAwAAAAHAAMAAAAPAAwAAAAHAAMAAAAQAAwAAAAHAAMAAAARAAwAAAAHAAMAAAASAAwAAAAHAAMAAAASAA0AAAAHAAMAAAATAA0AAAAHAAMAAAAUAA0AAAAHAAMAAAARAA0AAAAHAAMAAAAQAA0AAAAHAAMAAAAPAA0AAAAHAAMAAAAOAA0AAAAHAAMAAAANAA0AAAAHAAMAAAAMAA0AAAAHAAMAAAALAA0AAAAHAAMAAAAKAA0AAAAHAAMAAAAJAA0AAAAHAAMAAAAIAA0AAAAHAAMAAAAWAA0AAAAHAAMAAAAWAAwAAAAHAAMAAAAWAAsAAAAHAAMAAAAWAAoAAAAHAAMAAAAWAAkAAAAHAAMAAAAWAAgAAAAHAAMAAAAWAAcAAAAHAAMAAAAWAAYAAAAHAAMAAAALAAgAAAAHAAMAAAALAAcAAAAHAAMAAAALAAYAAAAHAAMAAAAKAAYAAAAHAAMAAAAJAAYAAAAHAAMAAAAIAAYAAAAHAAMAAAAHAAYAAAAHAAMAAAAGAAYAAAAHAAMAAAAFAAYAAAAHAAMAAAAEAAYAAAAHAAMAAAADAAYAAAAHAAMAAAACAAYAAAAHAAMAAAABAAYAAAAHAAMAAAAAAAYAAAAHAAMAAAAAAAcAAAAHAAMAAAAAAAgAAAAHAAMAAAAAAAkAAAAHAAMAAAAAAAoAAAAHAAMAAAAAAAsAAAAHAAMAAAAAAAwAAAAHAAMAAAABAAwAAAAHAAMAAAABAAsAAAAHAAMAAAABAAoAAAAHAAMAAAABAAkAAAAHAAMAAAABAAgAAAAHAAMAAAABAAcAAAAHAAMAAAACAAcAAAAHAAMAAAACAAgAAAAHAAMAAAACAAkAAAAHAAMAAAACAAoAAAAHAAMAAAACAAsAAAAHAAMAAAACAAwAAAAHAAMAAAADAAwAAAAHAAMAAAADAAsAAAAHAAMAAAADAAoAAAAHAAMAAAADAAkAAAAHAAMAAAADAAgAAAAHAAMAAAADAAcAAAAHAAMAAAAEAAcAAAAHAAMAAAAEAAgAAAAHAAMAAAAEAAkAAAAHAAMAAAAEAAoAAAAHAAMAAAAEAAsAAAAHAAMAAAAEAAwAAAAHAAMAAAAFAAwAAAAHAAMAAAAFAAsAAAAHAAMAAAAFAAoAAAAHAAMAAAAFAAkAAAAHAAMAAAAFAAgAAAAHAAMAAAAFAAcAAAAHAAMAAAAGAAcAAAAHAAMAAAAGAAgAAAAHAAMAAAAGAAkAAAAHAAMAAAAGAAoAAAAHAAMAAAAGAAsAAAAHAAMAAAAGAAwAAAAHAAMAAAAHAAwAAAAHAAMAAAAHAAsAAAAHAAMAAAAHAAoAAAAHAAMAAAAHAAkAAAAHAAMAAAAHAAgAAAAHAAMAAAAHAAcAAAAHAAMAAAAIAAcAAAAHAAMAAAAIAAgAAAAHAAMAAAAIAAkAAAAHAAMAAAAIAAoAAAAHAAMAAAAIAAsAAAAHAAMAAAAJAAsAAAAHAAMAAAAJAAoAAAAHAAMAAAAJAAkAAAAHAAMAAAAJAAgAAAAHAAMAAAAJAAcAAAAHAAMAAAAKAAcAAAAHAAMAAAAKAAgAAAAHAAMAAAAKAAkAAAAHAAMAAAAKAAoAAAAHAAMAAAAKAAsAAAAHAAMAAAALAAsAAAAHAAMAAAALAAoAAAAHAAMAAAALAAkAAAAHAAMAAAAMAAkAAAAHAAMAAAAMAAgAAAAHAAMAAAAMAAcAAAAHAAMAAAAMAAYAAAAHAAMAAAANAAYAAAAHAAMAAAANAAcAAAAHAAMAAAANAAgAAAAHAAMAAAANAAkAAAAHAAMAAAANAAoAAAAHAAMAAAAMAAoAAAAHAAMAAAAMAAsAAAAHAAMAAAANAAsAAAAHAAMAAAAOAAsAAAAHAAMAAAAOAAoAAAAHAAMAAAAOAAkAAAAHAAMAAAAOAAgAAAAHAAMAAAAOAAcAAAAHAAMAAAAOAAYAAAAHAAMAAAAPAAYAAAAHAAMAAAAPAAcAAAAHAAMAAAAPAAgAAAAHAAMAAAAPAAkAAAAHAAMAAAAPAAoAAAAHAAMAAAAPAAsAAAAHAAMAAAAQAAsAAAAHAAMAAAAQAAoAAAAHAAMAAAAQAAkAAAAHAAMAAAAQAAgAAAAHAAMAAAAQAAcAAAAHAAMAAAAQAAYAAAAHAAMAAAARAAYAAAAHAAMAAAARAAcAAAAHAAMAAAARAAgAAAAHAAMAAAARAAkAAAAHAAMAAAARAAoAAAAHAAMAAAARAAsAAAAHAAMAAAASAAsAAAAHAAMAAAASAAoAAAAHAAMAAAASAAkAAAAHAAMAAAASAAgAAAAHAAMAAAASAAcAAAAHAAMAAAASAAYAAAAHAAMAAAATAAYAAAAHAAMAAAATAAcAAAAHAAMAAAATAAgAAAAHAAMAAAATAAkAAAAHAAMAAAATAAoAAAAHAAMAAAATAAsAAAAHAAMAAAATAAwAAAAHAAMAAAAUAAwAAAAHAAMAAAAUAAsAAAAHAAMAAAAUAAoAAAAHAAMAAAAUAAkAAAAHAAMAAAAUAAgAAAAHAAMAAAAUAAcAAAAHAAMAAAAUAAYAAAAHAAMAAAAVAAYAAAAHAAMAAAAVAAcAAAAHAAMAAAAVAAgAAAAHAAMAAAAVAAkAAAAHAAMAAAAVAAoAAAAHAAMAAAAVAAsAAAAHAAMAAAAVAAwAAAAHAAMAAAD+/wUAAAAGAAIAAAD+/wYAAAAGAAMAAAD+/wcAAAAGAAMAAAD+/wgAAAAGAAMAAAD+/wkAAAAGAAMAAAD+/woAAAAGAAMAAAD+/wsAAAAGAAMAAAD+/wwAAAAGAAMAAAD+/w0AAAAGAAMAAAD2/wYAAAAIAAMAAAD2/wUAAAAIAAIAAAD1/wUAAAAHAAIAAAD0/wUAAAAHAAIAAADz/wUAAAAHAAIAAADy/wUAAAAHAAIAAADx/wUAAAAHAAIAAAD2/wcAAAAHAAMAAAD2/wgAAAAIAAMAAAD2/wkAAAAIAAMAAAD2/woAAAAIAAMAAAD2/wsAAAAIAAMAAAD2/wwAAAAIAAMAAAD2/w0AAAAIAAMAAAD1/w0AAAAHAAMAAAD0/w0AAAAHAAMAAADz/w0AAAAHAAMAAADy/w0AAAAHAAMAAADx/w0AAAAHAAMAAADw/w0AAAAHAAMAAADt/wYAAAAHAAMAAADt/wcAAAAHAAMAAADt/wgAAAAHAAMAAADt/wkAAAAHAAMAAADt/woAAAAHAAMAAADt/wsAAAAHAAMAAADt/wwAAAAHAAMAAADt/w0AAAAHAAMAAADu/w0AAAAHAAMAAADv/w0AAAAHAAMAAADu/wUAAAAHAAIAAADv/wUAAAAHAAIAAADw/wUAAAAHAAIAAADs/wUAAAAGAAIAAADs/w0AAAAGAAMAAADs/wwAAAAGAAMAAADs/wsAAAAGAAMAAADs/woAAAAGAAMAAADs/wkAAAAGAAMAAADs/wgAAAAGAAMAAADs/wcAAAAGAAMAAADs/wYAAAAGAAMAAADt/wUAAAAHAAIAAADu/wYAAAAHAAMAAADu/wcAAAAHAAMAAADu/wgAAAAHAAMAAADv/wgAAAAHAAMAAADv/wcAAAAHAAMAAADv/wYAAAAHAAMAAADw/wYAAAAHAAMAAADx/wYAAAAHAAMAAADy/wYAAAAHAAMAAADz/wYAAAAHAAMAAAD0/wYAAAAHAAMAAAD1/wcAAAAHAAMAAAD1/wYAAAAHAAMAAADy/wcAAAAHAAMAAADx/wcAAAAHAAMAAADw/wcAAAAHAAMAAADw/wgAAAAHAAMAAADw/wkAAAAHAAMAAADv/wkAAAAHAAMAAADu/wkAAAAHAAMAAADu/woAAAAHAAMAAADu/wsAAAAHAAMAAADu/wwAAAAHAAMAAADv/wwAAAAHAAMAAADw/wwAAAAHAAMAAADx/wwAAAAHAAMAAADy/wwAAAAHAAMAAADz/wwAAAAHAAMAAAD0/wwAAAAHAAMAAAD1/wwAAAAHAAMAAAD1/wsAAAAHAAMAAAD1/woAAAAHAAMAAAD1/wkAAAAHAAMAAAD1/wgAAAAHAAMAAAD0/wcAAAAHAAMAAADz/wcAAAAHAAMAAADx/wkAAAAHAAMAAADx/woAAAAHAAMAAADw/woAAAAHAAMAAADw/wsAAAAHAAMAAADv/wsAAAAHAAMAAADv/woAAAAHAAMAAADx/wsAAAAHAAMAAADy/wsAAAAHAAMAAADz/wsAAAAHAAMAAAD0/wsAAAAHAAMAAAD0/woAAAAHAAMAAAD0/wkAAAAHAAMAAAD0/wgAAAAHAAMAAADz/wgAAAAHAAMAAADy/wgAAAAHAAMAAADx/wgAAAAHAAMAAADz/wkAAAAHAAMAAADz/woAAAAHAAMAAADy/woAAAAHAAMAAADy/wkAAAAHAAMAAAA=")
+tile_set = SubResource("TileSet_kry3j")
+metadata/_edit_lock_ = true
 
-[node name="Cube2" parent="Platform" unique_id=1408955095 instance=ExtResource("1_jjgbg")]
-position = Vector2(896, 640)
+[node name="WindLayer" type="TileMapLayer" parent="." unique_id=1441572974]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_kry3j")
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAADAAQAAAABAAIAAAAAAAQAAAAAAAIAAAABAAQAAAAAAAIAAAACAAQAAAAAAAIAAAAKAAQAAAACAAIAAAALAAQAAAAAAAIAAAANAAQAAAAAAAIAAAAQAAQAAAAAAAIAAAARAAQAAAACAAIAAAASAAQAAAAAAAIAAAAVAAQAAAAAAAIAAAATAAQAAAACAAIAAAAEAAQAAAACAAIAAAAUAAQAAAABAAIAAAD2/wQAAAABAAIAAAD1/wQAAAAAAAIAAADz/wQAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_6bp64")
+metadata/_edit_lock_ = true
 
-[node name="Cube3" parent="Platform" unique_id=1644657038 instance=ExtResource("1_jjgbg")]
-position = Vector2(768, 640)
+[node name="Fireflies" type="GPUParticles2D" parent="." unique_id=1637395429]
+position = Vector2(1342, 528)
+scale = Vector2(15.720007, 1)
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_jjvhh")
 
-[node name="Cube4" parent="Platform" unique_id=12268662 instance=ExtResource("1_jjgbg")]
-position = Vector2(640, 640)
+[node name="Sparkle" type="GPUParticles2D" parent="." unique_id=537800856]
+position = Vector2(1408, 128)
+scale = Vector2(16.310415, 4.88)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_8gbba")
 
-[node name="Cube5" parent="Platform" unique_id=1307644422 instance=ExtResource("1_jjgbg")]
-position = Vector2(512, 640)
-
-[node name="Cube6" parent="Platform" unique_id=1491405191 instance=ExtResource("1_jjgbg")]
-position = Vector2(384, 640)
-
-[node name="Cube7" parent="Platform" unique_id=129030117 instance=ExtResource("1_jjgbg")]
-position = Vector2(256, 640)
-
-[node name="Cube8" parent="Platform" unique_id=647849657 instance=ExtResource("1_jjgbg")]
-position = Vector2(128, 640)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1862031431]
+position = Vector2(191.99992, 1282.9999)
+scale = Vector2(85.99999, 19.156246)
+texture = SubResource("GradientTexture2D_21xkr")
