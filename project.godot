@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="PlatformerGameProject"
+config/name="Soulful"
 run/main_scene="uid://doj4jxk4d2y81"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Art/icon.svg"
