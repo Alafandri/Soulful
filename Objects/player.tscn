@@ -9,6 +9,73 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(127.15781, 127.15781)
 
+[sub_resource type="Gradient" id="Gradient_x20fu"]
+colors = PackedColorArray(0.47553682, 0.47553688, 0.47553682, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6iyac"]
+gradient = SubResource("Gradient_x20fu")
+
+[sub_resource type="Curve" id="Curve_0ar0x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6767534), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6iyac"]
+curve = SubResource("Curve_0ar0x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_slvmq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+gravity = Vector3(-400, 400, 0)
+scale_min = 7.5299997
+scale_max = 7.5299997
+scale_curve = SubResource("CurveTexture_6iyac")
+color_initial_ramp = SubResource("GradientTexture1D_6iyac")
+
+[sub_resource type="Gradient" id="Gradient_8gbba"]
+offsets = PackedFloat32Array(0.007163324, 0.16540642, 0.82703215, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.893186, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x20fu"]
+gradient = SubResource("Gradient_8gbba")
+width = 1
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_0ar0x"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
+gradient = SubResource("Gradient_0ar0x")
+
+[sub_resource type="Gradient" id="Gradient_slvmq"]
+offsets = PackedFloat32Array(0.008503402, 0.5261438, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kry3j"]
+gradient = SubResource("Gradient_slvmq")
+
+[sub_resource type="Curve" id="Curve_ng3n2"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1.7770233), 0.0, 0.0, 0, 0, Vector2(0.11834319, -17.59816), 45.337883, 45.337883, 0, 0, Vector2(0.24654832, 6.24823), 0.0, 0.0, 0, 0, Vector2(0.38856015, -8.655762), 0.0, 0.0, 0, 0, Vector2(0.49901378, 6.24823), 0.0, 0.0, 0, 0, Vector2(0.6213018, -13.126953), 0.0, 0.0, 0, 0, Vector2(0.7554241, 12.209824), 0.0, 0.0, 0, 0, Vector2(0.89349115, -8.655762), 0.0, 0.0, 0, 0, Vector2(0.99999, 9.229019), 0.0, 0.0, 0, 0, Vector2(1, 13.700211), -442.32132, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_6bp64"]
+curve = SubResource("Curve_ng3n2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f7am4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 400, 1)
+gravity = Vector3(100, 5, 0)
+tangential_accel_min = -10.250002
+tangential_accel_max = 7.9999976
+tangential_accel_curve = SubResource("CurveTexture_6bp64")
+damping_max = 100.00001
+scale_min = 1.8
+scale_max = 2.3
+color_ramp = SubResource("GradientTexture1D_kry3j")
+color_initial_ramp = SubResource("GradientTexture1D_8gbba")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i4gt"]
 size = Vector2(302, 733)
 
@@ -166,7 +233,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1sbjj")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"slash",
 "speed": 20.0
 }]
 
@@ -200,6 +267,26 @@ limit_enabled = false
 position_smoothing_enabled = true
 script = ExtResource("3_2i4gt")
 
+[node name="Snow" type="GPUParticles2D" parent="Camera2D" unique_id=1447010100]
+visible = false
+position = Vector2(256, 0)
+amount = 100
+lifetime = 2.07
+process_material = SubResource("ParticleProcessMaterial_slvmq")
+
+[node name="Wind" type="GPUParticles2D" parent="Camera2D" unique_id=756331495]
+modulate = Color(1, 1, 1, 0.60784316)
+texture_filter = 1
+position = Vector2(-9, -78)
+amount = 3
+texture = SubResource("GradientTexture2D_x20fu")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_f7am4")
+
 [node name="DeadZone" type="Area2D" parent="." unique_id=1558046797]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone" unique_id=1208573308]
@@ -211,7 +298,7 @@ texture_filter = 1
 position = Vector2(0.5000019, 0.5000019)
 scale = Vector2(6.0625, 6.0625)
 sprite_frames = SubResource("SpriteFrames_hyl1l")
-animation = &"Move"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=1060731099]
@@ -222,18 +309,17 @@ randomness = 0.2
 process_material = SubResource("ParticleProcessMaterial_0ad8t")
 
 [node name="Slash" type="AnimatedSprite2D" parent="." unique_id=626499867]
+visible = false
 texture_filter = 1
 position = Vector2(82, 2)
 scale = Vector2(4.010013, 4.010013)
 sprite_frames = SubResource("SpriteFrames_tvmpb")
-animation = &"Idle"
-autoplay = "Idle"
-frame_progress = 0.3624188
+animation = &"slash"
+frame_progress = 0.783192
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Slash" unique_id=445878543]
 z_index = -1
-emitting = false
-amount = 15
+amount = 2
 lifetime = 0.5
 explosiveness = 0.11
 randomness = 0.2

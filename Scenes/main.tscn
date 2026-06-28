@@ -12,51 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://beiwg57hbyicj" path="res://Art/Background/background1.png" id="11_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://bpb7y3tf0w3j2" path="res://Art/Background/backgroun2.png" id="12_6iyac"]
 
-[sub_resource type="Gradient" id="Gradient_8gbba"]
-offsets = PackedFloat32Array(0.007163324, 0.16540642, 0.82703215, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.893186, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jjvhh"]
-gradient = SubResource("Gradient_8gbba")
-width = 1
-height = 32
-fill_to = Vector2(0, 1)
-
-[sub_resource type="Gradient" id="Gradient_bo1nx"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
-gradient = SubResource("Gradient_bo1nx")
-
-[sub_resource type="Gradient" id="Gradient_jjvhh"]
-offsets = PackedFloat32Array(0.008503402, 0.5261438, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_kry3j"]
-gradient = SubResource("Gradient_jjvhh")
-
-[sub_resource type="Curve" id="Curve_21xkr"]
-_limits = [-200.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0, 1.7770233), 0.0, 0.0, 0, 0, Vector2(0.11834319, -17.59816), 45.337883, 45.337883, 0, 0, Vector2(0.24654832, 6.24823), 0.0, 0.0, 0, 0, Vector2(0.38856015, -8.655762), 0.0, 0.0, 0, 0, Vector2(0.49901378, 6.24823), 0.0, 0.0, 0, 0, Vector2(0.6213018, -13.126953), 0.0, 0.0, 0, 0, Vector2(0.7554241, 12.209824), 0.0, 0.0, 0, 0, Vector2(0.89349115, -8.655762), 0.0, 0.0, 0, 0, Vector2(0.99999, 9.229019), 0.0, 0.0, 0, 0, Vector2(1, 13.700211), -442.32132, 0.0, 0, 0]
-point_count = 10
-
-[sub_resource type="CurveTexture" id="CurveTexture_6bp64"]
-curve = SubResource("Curve_21xkr")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bo1nx"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(200, 200, 1)
-gravity = Vector3(100, 20, 0)
-tangential_accel_min = -10.250002
-tangential_accel_max = 7.9999976
-tangential_accel_curve = SubResource("CurveTexture_6bp64")
-damping_max = 100.00001
-scale_min = 1.5
-scale_max = 1.8
-color_ramp = SubResource("GradientTexture1D_kry3j")
-color_initial_ramp = SubResource("GradientTexture1D_8gbba")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("3_8gbba")
 6:2/0 = 0
@@ -86,18 +41,23 @@ sources/0 = SubResource("TileSetAtlasSource_jjvhh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kry3j"]
 shader = ExtResource("3_jjvhh")
-shader_parameter/wind_start_threshold = 0.1
-shader_parameter/wind_end_threshold = 1.0490000498275
-shader_parameter/wind_end_threshold_2 = 0.1
-shader_parameter/wind_strength = 0.2
-shader_parameter/wind_speed = 1.0
-shader_parameter/scale = 1.001
+shader_parameter/margin_scale = 1.0010000000475
+shader_parameter/wind_strength = 1.0
+shader_parameter/wind_scale = 15.515
+shader_parameter/wind_speed = 0.1
+shader_parameter/wind_height_start = 0.70000003325
+shader_parameter/sway_strength = 0.5
+shader_parameter/sway_speed = 1.25
+shader_parameter/sway_height_start = 0.0800000038
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21xkr"]
 texture = ExtResource("3_8gbba")
 1:2/0 = 0
 2:2/0 = 0
 0:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6bp64"]
 sources/0 = SubResource("TileSetAtlasSource_21xkr")
@@ -106,7 +66,7 @@ sources/0 = SubResource("TileSetAtlasSource_21xkr")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.20552148, 0.4937837), 0.0, 0.0, 0, 0, Vector2(0.72699386, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_8gbba"]
+[sub_resource type="CurveTexture" id="CurveTexture_d1ilt"]
 curve = SubResource("Curve_bo1nx")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjvhh"]
@@ -117,7 +77,7 @@ gravity = Vector3(0, -5.01, 0)
 scale_min = 3.78
 scale_max = 3.78
 color = Color(1, 1, 0.3372549, 1)
-alpha_curve = SubResource("CurveTexture_8gbba")
+alpha_curve = SubResource("CurveTexture_d1ilt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gbba"]
 particle_flag_disable_z = true
@@ -139,20 +99,6 @@ fill_to = Vector2(0, 1)
 [node name="Player" parent="." unique_id=1401649953 groups=["Player"] instance=ExtResource("2_bo1nx")]
 position = Vector2(0, 298)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=517834051]
-visible = false
-modulate = Color(1, 1, 1, 0.60784316)
-texture_filter = 1
-position = Vector2(328, 416)
-amount = 25
-texture = SubResource("GradientTexture2D_jjvhh")
-lifetime = 5.0
-preprocess = 2.0
-randomness = 1.0
-trail_enabled = true
-trail_lifetime = 0.6
-process_material = SubResource("ParticleProcessMaterial_bo1nx")
-
 [node name="MapLayer" type="TileMapLayer" parent="." unique_id=817557541]
 texture_filter = 1
 position = Vector2(-0.00024414063, -256)
@@ -166,7 +112,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_kry3j")
 position = Vector2(-0.00024414063, -256)
 scale = Vector2(8, 8)
-tile_map_data = PackedByteArray("AAADAAQAAAABAAIAAAAAAAQAAAAAAAIAAAABAAQAAAAAAAIAAAACAAQAAAAAAAIAAAAKAAQAAAACAAIAAAALAAQAAAAAAAIAAAANAAQAAAAAAAIAAAAQAAQAAAAAAAIAAAARAAQAAAACAAIAAAASAAQAAAAAAAIAAAAVAAQAAAAAAAIAAAATAAQAAAACAAIAAAAEAAQAAAACAAIAAAAUAAQAAAABAAIAAAD2/wQAAAABAAIAAAD1/wQAAAAAAAIAAADz/wQAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAMAAAAAAAQAAAAAAAIAAAABAAQAAAABAAIAAAACAAQAAAACAAIAAAAKAAQAAAACAAIAAAALAAQAAAAAAAIAAAANAAQAAAACAAIAAAAQAAQAAAAAAAIAAAARAAQAAAACAAIAAAATAAQAAAACAAIAAAAEAAQAAAABAAIAAAAUAAQAAAABAAIAAAD2/wQAAAABAAIAAAD1/wQAAAAAAAIAAADz/wQAAAACAAIAAAAHAAQAAAACAAIAAAAIAAQAAAAAAAMAAAASAAQAAAABAAMAAAAPAAQAAAADAAIAAAA=")
 tile_set = SubResource("TileSet_6bp64")
 
 [node name="Fireflies" type="GPUParticles2D" parent="." unique_id=1637395429]
@@ -211,6 +157,7 @@ scale = Vector2(1, 3.9999993)
 
 [node name="Background" type="Node2D" parent="." unique_id=981981288]
 visible = false
+modulate = Color(0.21568628, 0.25490198, 0.39215687, 1)
 position = Vector2(-0.00024414063, 128)
 
 [node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1673060106]

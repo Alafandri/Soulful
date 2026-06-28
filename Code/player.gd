@@ -23,6 +23,21 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != 0:
 		sprite.flip_h = direction < 0
+
+	$Slash.flip_h = sprite.flip_h
+	if sprite.flip_h:
+		$Slash.position.x = -abs($Slash.position.x)
+	else:
+		$Slash.position.x = abs($Slash.position.x)
+	
+	if Input.is_action_just_pressed("slash") and not $Slash.visible:
+		$Slash.visible = true
+		$Slash.frame = 0
+		$Slash.play("slash")
+		
+		await get_tree().create_timer(0.5).timeout
+		$Slash.stop()
+		$Slash.visible = false
 	
 	if not is_on_floor():
 		velocity.y += get_custom_gravity(velocity) * delta
