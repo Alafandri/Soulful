@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c20esgoyweh1d" path="res://Objects/pause_menu.tscn" id="11_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bck5p7rpwdyim" path="res://Art/Background/background4.png" id="11_k12tt"]
 [ext_resource type="Texture2D" uid="uid://ljqag242hysq" path="res://Art/Background/background1.png" id="11_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://b6eb8sq2joh0d" path="res://Objects/enemy.tscn" id="12_6iyac"]
 
 [sub_resource type="Gradient" id="Gradient_ng3n2"]
 offsets = PackedFloat32Array(0.0704023, 0.41235632, 0.66810346)
@@ -145,8 +146,8 @@ amount = 50
 process_material = SubResource("ParticleProcessMaterial_8gbba")
 
 [node name="Fade" type="Sprite2D" parent="." unique_id=1862031431]
-position = Vector2(554, 1284.0001)
-scale = Vector2(85.99999, 19.156246)
+position = Vector2(15, 1180.5)
+scale = Vector2(187.5, 22.390625)
 texture = SubResource("GradientTexture2D_21xkr")
 metadata/_edit_lock_ = true
 
@@ -173,58 +174,61 @@ scale = Vector2(1, 3.9999993)
 position = Vector2(2816, 128)
 scale = Vector2(1, 3.9999993)
 
-[node name="Background" type="Node2D" parent="." unique_id=981981288]
-modulate = Color(0.21568628, 0.25490198, 0.39215687, 1)
-position = Vector2(-0.00024414063, 128)
-metadata/_edit_lock_ = true
+[node name="PauseMenu" parent="." unique_id=402284616 instance=ExtResource("11_d1ilt")]
+visible = false
 
-[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=2122587320]
+[node name="Background" type="Node2D" parent="." unique_id=2025593399]
+modulate = Color(0.21568628, 0.25490198, 0.39215687, 1)
+position = Vector2(-0.00024414063, 152)
+scale = Vector2(1, 1.2)
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=1688645052]
 scale = Vector2(8.295716, 8.295716)
 scroll_scale = Vector2(0.3, 0.3)
 repeat_size = Vector2(160, 0)
 repeat_times = 8
 
-[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D2" unique_id=888575103]
-z_index = -3
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D2" unique_id=923252385]
+z_index = -35
 texture_filter = 2
 texture = ExtResource("11_k12tt")
 metadata/_edit_lock_ = true
 
-[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=1640733046]
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=75701097]
 scale = Vector2(8.295716, 8.295716)
 scroll_scale = Vector2(0.5, 0.5)
 repeat_size = Vector2(160, 0)
 repeat_times = 8
 
-[node name="Sprite2D3" type="Sprite2D" parent="Background/Parallax2D3" unique_id=449510223]
-z_index = -3
+[node name="Sprite2D3" type="Sprite2D" parent="Background/Parallax2D3" unique_id=1583209233]
+z_index = -33
 texture_filter = 1
 texture = ExtResource("10_jkdf5")
 metadata/_edit_lock_ = true
 
-[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=2124632705]
+[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=1693114786]
 scale = Vector2(8.295716, 8.295716)
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(160, 0)
 repeat_times = 8
 
-[node name="Sprite2D4" type="Sprite2D" parent="Background/Parallax2D4" unique_id=2060251165]
-z_index = -3
+[node name="Sprite2D4" type="Sprite2D" parent="Background/Parallax2D4" unique_id=1633073679]
+z_index = -31
 texture_filter = 1
 texture = ExtResource("9_fdnlq")
 metadata/_edit_lock_ = true
 
-[node name="Parallax2D5" type="Parallax2D" parent="Background" unique_id=2098260]
+[node name="Parallax2D5" type="Parallax2D" parent="Background" unique_id=499995160]
 scale = Vector2(8.295716, 8.295716)
 repeat_size = Vector2(160, 0)
 repeat_times = 8
 
-[node name="Sprite2D5" type="Sprite2D" parent="Background/Parallax2D5" unique_id=842221912]
-z_index = -3
+[node name="Sprite2D5" type="Sprite2D" parent="Background/Parallax2D5" unique_id=1201914375]
+z_index = -29
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_6iyac")
 texture = ExtResource("11_wsu2k")
 metadata/_edit_lock_ = true
 
-[node name="PauseMenu" parent="." unique_id=402284616 instance=ExtResource("11_d1ilt")]
-visible = false
+[node name="Enemy" parent="." unique_id=1046912632 instance=ExtResource("12_6iyac")]
+position = Vector2(256, 256)

@@ -235,7 +235,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"slash",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ht63"]
@@ -279,7 +279,7 @@ process_material = SubResource("ParticleProcessMaterial_slvmq")
 modulate = Color(1, 1, 1, 0.60784316)
 texture_filter = 1
 position = Vector2(-9, -78)
-amount = 3
+amount = 6
 texture = SubResource("GradientTexture2D_x20fu")
 lifetime = 5.0
 preprocess = 2.0
@@ -295,7 +295,7 @@ position = Vector2(0, -314.5)
 shape = SubResource("RectangleShape2D_2i4gt")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1046159863]
-modulate = Color(0.5006195, 0.5006196, 0.5006196, 1)
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 texture_filter = 1
 position = Vector2(0.5000019, 0.5000019)
 scale = Vector2(6.0625, 6.0625)
